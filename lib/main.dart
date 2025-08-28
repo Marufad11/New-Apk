@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:myapp/match_scoring_page.dart';
+import 'package:myapp/create_account_page.dart';
+import 'package:myapp/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         if (mounted) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => MatchScoringPage()),
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
           );
         }
       } catch (e) {
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Cricket Scorer'),
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
       ),
@@ -157,6 +158,26 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: _loginPressed,
                 child: const Text('LOG IN'),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
+                child: const Text('Login with Guest'),
+              ),
+              const SizedBox(height: 12),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CreateAccountPage()),
+                  );
+                },
+                child: const Text('Create New Account'),
               ),
             ],
           ),
